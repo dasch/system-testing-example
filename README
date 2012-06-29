@@ -9,6 +9,10 @@ The system is specified in the Procfile. It consists of two apps, `auth` and
 starts Foreman in a separate process, runs Capybara against the Nginx
 instance, and shuts down Foreman afterwards.
 
+Run the specs with
+
+    rspec features
+
 The test itself is pretty stupid, and could use some abstractions, but this is
 the basic idea.
 
