@@ -18,7 +18,7 @@ the basic idea.
 
 The technique of course becomes more interesting as soon as other services
 such as Solr and Redis come into the mix. I imagine one could even boot a
-simple mail server and client and do complete integration testing a e-mail
+simple mail server and client and do complete integration testing of e-mail
 scenarios such as:
 
     When I register as a user
