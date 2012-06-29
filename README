@@ -28,9 +28,11 @@ scenarios such as:
     Then my user account should be confirmed
 
 
-If you follow this approach, you'll quickly run into issues with Bundler. Say
-you run the specs with `bundle exec rspec features`, but your Procfile looks
-like this:
+Issues
+------
+
+You'll quickly run into issues with Bundler. Say you run the specs with
+`bundle exec rspec features`, but your Procfile looks like this:
 
     foo: bundle exec ruby foo.rb
     bar: cd vendor/bar && bundle exec ruby bar.rb
