@@ -1,0 +1,24 @@
+An example of system level testing
+==================================
+
+While very simplistic, this provides a basic example of a system-level
+integration test using RSpec, Capybara and Poltergeist.
+
+The system is specified in the Procfile. It consists of two apps, `auth` and
+`toots`, as well as an Nginx web server. The test, `features/tooting_spec.rb`,
+starts Foreman in a separate process, runs Capybara against the Nginx
+instance, and shuts down Foreman afterwards.
+
+The test itself is pretty stupid, and could use some abstractions, but this is
+the basic idea.
+
+The technique of course becomes more interesting as soon as other services
+such as Solr and Redis come into the mix. I imagine one could even boot a
+simple mail server and client and do complete integration testing a e-mail
+scenarios such as:
+
+    When I register as a user
+    Then I should receive a confirmation e-mail
+
+    When I click the link in the confirmation e-mail
+    Then my user account should be confirmed
