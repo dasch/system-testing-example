@@ -26,3 +26,20 @@ scenarios such as:
 
     When I click the link in the confirmation e-mail
     Then my user account should be confirmed
+
+
+If you follow this approach, you'll quickly run into issues with Bundler. Say
+you run the specs with `bundle exec rspec features`, but your Procfile looks
+like this:
+
+    foo: bundle exec ruby foo.rb
+    bar: cd vendor/bar && bundle exec ruby bar.rb
+
+That is, "foo" and "bar" have different Gemfiles. While "foo" may share its
+bundle with Foreman, "bar" may not. Because Foreman is started from within
+`bundle exec` though, both "foo" and "bar" will inherit the bundle, regardless
+of the fact that "bar" is run with `bundle exec` in a different directory
+that has its own Gemfile. So far the only solution I have found is to *not*
+run the specs with `bundle exec`, but to instead do `require "bundler/setup"`
+in the spec (or spec helper) *after* forking the Foreman process. If you had
+any insight into how to make that easier, I'd love some feedback.
